@@ -396,7 +396,7 @@ int main()
     }
     else
     {
-        printf("Invalid choice, please try again.\n");
+        printf("Invalid choice, please try again!.\n");
     }
 }
 return 0;
