@@ -138,6 +138,21 @@ void drawCircle(int centerX, int centerY, int radius, int height, int width, cha
     }
 }
 
+void deleteArea(int x, int y, int areaWidth, int areaHeight, int height, int width, char canvas[height][width])
+{
+    for(int i = y; i < y + areaHeight; i++)
+    {
+        for(int j = x; j < x + areaWidth; j++)
+        {
+            if(i >= 0 && i < height &&
+               j >= 0 && j < width)
+            {
+                canvas[i][j] = '_';
+            }
+        }
+    }
+}
+
 int main()
 {
     int height, width;
@@ -146,7 +161,10 @@ int main()
     initializeCanvas(height, width, canvas);
 
     int choice;
-    printf("choose among the following:\n1.point\n2.rectangle\n3.line\n4.triangle\n5.circle\n");
+
+    while(1)
+    {
+    printf("choose among the following:\n1.point\n2.rectangle\n3.line\n4.triangle\n5.circle\n6.display canvas\n7.delete area\n8.clear canvas\n9.modify area\n10.exit canvas\n");
     scanf("%d", &choice);
     
     if(choice==1)
@@ -157,6 +175,12 @@ int main()
 
     printf("Enter y coordinate: ");
     scanf("%d", &y);
+
+    if(x<0||y<0||x>width||y>height)
+    {
+        printf("invalid coordinates\n");
+        exit(0);
+    }
     
     drawPoint(x, y, height, width, canvas);
     }
@@ -210,10 +234,41 @@ int main()
 
         drawCircle(centerX, centerY, radius, height, width, canvas);
     }
-    
-    printf("\nCanvas:\n\n");
+    else if(choice==6)
+    {
+        printf("\nCanvas:\n\n");
 
-    displayCanvas(height, width, canvas);
+        displayCanvas(height, width, canvas);
+        
+    }
+    else if(choice==7)
+    {
+        int deleteX, deleteY, deleteWidth, deleteHeight;
 
-    return 0;
+        printf("enter x&y coordinates of area to delete: ");
+        scanf("%d\t%d", &deleteX, &deleteY);
+        printf("enter height & width of area to delete: ");
+        scanf("%d\t%d", &deleteWidth, &deleteHeight);
+
+        deleteArea(deleteX, deleteY, deleteWidth, deleteHeight, height, width, canvas);
+    }
+    else if(choice==8)
+    {
+         initializeCanvas(height, width, canvas);
+    }
+    else if(choice==9)
+    {
+        
+    }
+    else if(choice==10)
+    {
+        printf("Exiting canvas\n");
+        exit(0);
+    }
+    else
+    {
+        printf("Invalid choice! Please try again.\n");
+    }
+}
+return 0;
 }
