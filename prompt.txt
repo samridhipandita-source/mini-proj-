@@ -1,0 +1,31 @@
+2D Graphics Editor Project 
+
+1. What concepts do I need to learn to complete a 2D graphics editor in C using a 2D character array?
+
+2. Explain how to create a canvas using a 2D character array and initialize it with underscores.
+
+3. How do I pass height and width to functions in C using pointers?
+
+4. Check my code for inputting canvas dimensions and explain any errors.
+
+5. Help me understand how to pass a 2D array to functions.
+
+6. How can I implement drawing shape functions on a character canvas?
+
+7. Explain how rectangle drawing works in a 2D character array.
+
+8. How can I support both hollow and filled rectangles?
+
+9. How should I structure a menu-driven graphics editor in C?
+
+10. Help me debug compilation and GitHub terminal issues.
+
+11. Explain the method to insert a line in a 2D character array. What is a DDA line algorithm?
+
+12. How can I insert a triangle using line drawing?
+
+13. How can I approximate a circle on a character-based canvas?
+
+14. How can I implement delete and modify operations on a drawing canvas?
+
+15. Review my final code and suggest improvements before submission.
