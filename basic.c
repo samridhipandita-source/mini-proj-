@@ -5,9 +5,9 @@
 
 void intheightwidth(int *height, int *width)
 {
-    printf("HEIGHT:\n");
+    printf("HEIGHT OF CANVAS:\n");
     scanf("%d", height);
-    printf("WIDTH:\n");
+    printf("WIDTH OF CANVAS:\n");
     scanf("%d", width);
 }
 
@@ -119,6 +119,25 @@ void drawTriangle(int x1, int y1, int x2, int y2, int x3, int y3, int height, in
              height, width, canvas);
 }
 
+void drawCircle(int centerX, int centerY, int radius, int height, int width, char canvas[height][width])
+{
+    for(int y = 0; y < height; y++)
+    {
+        for(int x = 0; x < width; x++)
+        {
+            int dx = x - centerX;
+            int dy = y - centerY;
+
+            int distanceSquared = dx*dx + dy*dy;
+
+            if(abs(distanceSquared - radius*radius) <= radius)
+            {
+                canvas[y][x] = '*';
+            }
+        }
+    }
+}
+
 int main()
 {
     int height, width;
@@ -127,7 +146,7 @@ int main()
     initializeCanvas(height, width, canvas);
 
     int choice;
-    printf("choose among the following:\n1.point\n2.rectangle\n3.line\n4.triangle");
+    printf("choose among the following:\n1.point\n2.rectangle\n3.line\n4.triangle\n5.circle\n");
     scanf("%d", &choice);
     
     if(choice==1)
@@ -171,15 +190,25 @@ int main()
     else if(choice==4)
     {
         int x1,x2,x3,y1,y2,y3;
-        printf("enter coordinates for vetex1:");
+        printf("enter coordinates for vertex1:");
         scanf("%d\t%d", &x1, &y1);
-        printf("enter coordinates for vetex2:");
+        printf("enter coordinates for vertex2:");
         scanf("%d\t%d", &x2, &y2);
-        printf("enter coordinates for vetex3:");
+        printf("enter coordinates for vertex3:");
         scanf("%d\t%d", &x3, &y3);
 
         drawTriangle(x1,y1,x2,y2,x3,y3,height,width,canvas);
 
+    }
+    else if(choice==5)
+    {
+        int centerX, centerY, radius;
+        printf("enter center x&y coordinates for circle:");
+        scanf("%d\t%d", &centerX, &centerY);
+        printf("enter radius of circle:");
+        scanf("%d", &radius);
+
+        drawCircle(centerX, centerY, radius, height, width, canvas);
     }
     
     printf("\nCanvas:\n\n");
